@@ -10,6 +10,7 @@ led_rouge = Led('off', 18)
 
 @app.route('/')
 def index():
+
     return render_template('temperature.html')
 
 @app.route('/type_temp/<C_F>')
