@@ -1,14 +1,19 @@
+from flask import Flask
+app = Flask(__name__)
+from flask import render_template
 import time
 from temperatureSensor import TemperatureSensor
 capteur = TemperatureSensor('28-021313bf0eaa')
 
+@app.route('/')
+def index():
+    return render_template('temperature.html')
 
-type_temp = input('Quelle unite de température voulez-vous chosir (F ou C) : ')
-if type_temp == 'C':
-    while True:
-        print(capteur.read_temp())
-        time.sleep(1)
-elif type_temp == 'F':
-    while True:
-        print(capteur.read_temp_far())
-        time.sleep(1)
+@app.route('/type_temp/<C_F>')
+def type_temp(C_F):
+    if C_F == 'celcius':
+        temp_c = capteur.read_temp()
+        return render_template('temperature.html', temp_c=temp_c)
+    elif C_F == 'farenheit':
+        farenheit = capteur.read_temp_far()
+        return render_template('temperature.html', farenheit=farenheit)

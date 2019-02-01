@@ -5,11 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
 <a href="/type_temp/celcius" class="btn btn-success">Température en Celcius</a>
-<a href="/type_temp/faranheit" class="btn btn-warning">Température en Faranheit</a>
+<a href="/type_temp/farenheit" class="btn btn-warning">Température en Farenheit</a>
+{% if temp_c %}
+<p>{{ temp_c }}
+    {% if temp_c < 15 %}
+    Il fait froid Brrrr
+    {% elif temp_c > 15 and temp_c < 30 %}
+    Ca peut aller !!
+    {% elif temp-c >30 %}
+    Il fait chaud !!
+    {% endif %}
+</p>
+{% elif farenheit %}
+<p>{{ farenheit }}
+    {% if farenheit < 59 %}
+    Il fait froid Brrrr
+    {% elif farenheit > 59 and farenheit < 86 %}
+    Ca peut aller !!
+    {% elif farenheit-c > 86 %}
+    Il fait chaud !!
+    {% endif %}
+</p>
+{% endif %}
 </body>
 </html>
